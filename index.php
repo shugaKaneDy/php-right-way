@@ -260,3 +260,55 @@ echo "<br/>";
 // // list($a, $b, $c, $d) = $array;
 // [$a, $b, $c, $d] = $array;
 // echo $a . ' ' . $b . ' ' . $c . ' ' . $d . '<br />';
+
+// Error handling
+// trigger_error('Example Error', E_USER_ERROR);
+// trigger_error('Example Error', E_USER_WARNING);
+// echo 1;
+// function errorHandler (int $type, string $msg, ?string $file, ?int $line) {
+// }
+
+// files
+// $dir = scandir(__DIR__); = to scan files
+// mkdir('foo'); = to create dir
+// rmdir('foo'); = to delete dir, it has to be empty to delete otherwise you will get a warning
+// mkdir('foo/bar', recursive: true); = to create multiple directories
+// rmdir('foo/bar'); = to delete just the bar 
+// rmdir('foo'); = to delete foo 
+// file_exist();
+// filesize();
+// file_put_contents('foo', 'hello world');
+
+// $file = fopen('foo.txt', 'r', ); = r = reading the file = resource
+
+// fgets(); = we read file from the line
+// fgetcsv(); = returns the file with an array that is seperated with comma(default)
+
+echo "<br/>";
+// $file = fopen('foo.txt', 'r');
+
+// while (($line = fgets($file)) !== false) {
+//   echo $line . "<br/>";
+// }
+// fclose($file);
+
+// echo "<br/>";
+// $file = fopen('foo.txt', 'r');
+
+// while (($line = fgetcsv($file)) !== false) {
+//   print_r($line);
+// }
+// fclose($file);
+
+// $content = file_get_contents('foo.txt'); = to get the file content and store it in a variable
+// $content = file_get_contents('foo.txt', offset: 3, length: 2);
+// echo $content;
+// file_put_contents('bar.txt', 'hello'); = creates a file bar.txt(if not exists other wise it will override) and then writes hello
+// file_put_contents('bar.txt', 'hello');
+// file_put_contents('bar.txt', 'world');
+// file_put_contents('bar.txt', 'world', FILE_APPEND);
+// unlink('bar.txt');
+// copy('foo.txt', 'bar.txt');
+// rename('foo.txt', 'bar.txt');
+
+
