@@ -54,3 +54,35 @@
 // $transaction = new Transaction(5, 'Test');
 // echo $transaction->customer?->paymentProfile?->id;
 // echo $transaction->getCustomer()?->getPaymentProfile()?->id;
+
+// name collision, namespace
+// namespace is something like a private and then global space is public. That is the ideas
+
+require_once 'PaymentGateway/Paddle/CustomerProfile.php';
+require_once 'Notification/Email.php';
+require_once 'PaymentGateway/Paddle/Transaction.php';
+require_once 'PaymentGateway/Stripe/Transaction.php';
+
+// use PaymentGateway\Paddle\Transaction;
+use PaymentGateway\Stripe\Transaction as StripeTransaction;
+// use PaymentGateway\Paddle\CustomerProfile;
+// use PaymentGateway\Paddle\{Transaction, CustomerProfile};
+// use PaymentGateway\Paddle;
+use PaymentGateway\Paddle AS PA;
+
+
+// $paddleTransaction = new Transaction();
+$stripeTransaction = new StripeTransaction();
+// $paddleCustomerProfile = new CustomerProfile();
+
+// $paddleTransaction = new Paddle\Transaction();
+// $paddleCustomerProfile = new Paddle\CustomerProfile();
+
+$paddleTransaction = new PA\Transaction();
+$paddleCustomerProfile = new PA\CustomerProfile();
+
+
+// var_dump(new paddle\Transaction());
+// var_dump(new Transaction());
+
+var_dump($paddleTransaction, $stripeTransaction);
