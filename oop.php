@@ -58,31 +58,62 @@
 // name collision, namespace
 // namespace is something like a private and then global space is public. That is the ideas
 
-require_once 'PaymentGateway/Paddle/CustomerProfile.php';
-require_once 'Notification/Email.php';
-require_once 'PaymentGateway/Paddle/Transaction.php';
-require_once 'PaymentGateway/Stripe/Transaction.php';
+// require_once 'PaymentGateway/Paddle/CustomerProfile.php';
+// require_once 'Notification/Email.php';
+// require_once 'PaymentGateway/Paddle/Transaction.php';
+// require_once 'PaymentGateway/Stripe/Transaction.php';
 
-// use PaymentGateway\Paddle\Transaction;
-use PaymentGateway\Stripe\Transaction as StripeTransaction;
-// use PaymentGateway\Paddle\CustomerProfile;
-// use PaymentGateway\Paddle\{Transaction, CustomerProfile};
-// use PaymentGateway\Paddle;
-use PaymentGateway\Paddle AS PA;
-
-
-// $paddleTransaction = new Transaction();
-$stripeTransaction = new StripeTransaction();
-// $paddleCustomerProfile = new CustomerProfile();
-
-// $paddleTransaction = new Paddle\Transaction();
-// $paddleCustomerProfile = new Paddle\CustomerProfile();
-
-$paddleTransaction = new PA\Transaction();
-$paddleCustomerProfile = new PA\CustomerProfile();
+// // use PaymentGateway\Paddle\Transaction;
+// use PaymentGateway\Stripe\Transaction as StripeTransaction;
+// // use PaymentGateway\Paddle\CustomerProfile;
+// // use PaymentGateway\Paddle\{Transaction, CustomerProfile};
+// // use PaymentGateway\Paddle;
+// use PaymentGateway\Paddle AS PA;
 
 
-// var_dump(new paddle\Transaction());
-// var_dump(new Transaction());
+// // $paddleTransaction = new Transaction();
+// $stripeTransaction = new StripeTransaction();
+// // $paddleCustomerProfile = new CustomerProfile();
 
-var_dump($paddleTransaction, $stripeTransaction);
+// // $paddleTransaction = new Paddle\Transaction();
+// // $paddleCustomerProfile = new Paddle\CustomerProfile();
+
+// $paddleTransaction = new PA\Transaction();
+// $paddleCustomerProfile = new PA\CustomerProfile();
+
+
+// // var_dump(new paddle\Transaction());
+// // var_dump(new Transaction());
+
+// var_dump($paddleTransaction, $stripeTransaction);
+
+// Coding Standards, Autoloading (PSR-4) & Composer
+// require_once 'app/PaymentGateway/Stripe/Transaction.php';
+// require_once 'app/Notification/Email.php';
+// require_once 'app/PaymentGateway/Paddle/CustomerProfile.php';
+// require_once 'app/PaymentGateway/Paddle/Transaction.php';
+
+// spl_autoload_register(function($class) {
+//   $path = __DIR__ . '/' . lcfirst(str_replace('\\', '/', $class)) . '.php';
+
+//   if(file_exists($path)) {
+//     require $path;
+//   }
+// });
+// spl_autoload_register(function($class) {
+//   var_dump('Autoloader 1');
+// });
+// spl_autoload_register(function($class) {
+//   var_dump('Autoloader 2');
+// }, prepend: true);
+
+require __DIR__ . '/vendor/autoload.php';
+
+use app\PaymentGateway\Paddle\Transaction;
+
+$paddleTransaction = new Transaction();
+var_dump($paddleTransaction);
+
+$id = new \Ramsey\Uuid\UuidFactory();
+
+echo $id->uuid4();
